@@ -29,6 +29,7 @@ const ContactForm = ({ newContact }) => {
     newContact(values);
     action.resetForm();
   };
+
   return (
     <div className={s.formContainer}>
       <Formik

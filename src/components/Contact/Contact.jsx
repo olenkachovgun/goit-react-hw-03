@@ -4,7 +4,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosContact } from "react-icons/io";
 import { FaSquarePhone } from "react-icons/fa6";
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, handleDelete }) => {
   return (
     <li className={s.item}>
       <div>
@@ -21,7 +21,9 @@ const Contact = ({ contact }) => {
           <p>{contact.number}</p>
         </div>
       </div>
-      <button type="button">Delete</button>
+      <button type="button" onClick={() => handleDelete(contact.id)}>
+        Delete
+      </button>
     </li>
   );
 };
