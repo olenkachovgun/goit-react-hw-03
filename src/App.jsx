@@ -13,13 +13,24 @@ function App() {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ];
   });
+  const [filter, setfilter] = useState("");
+  const hundleChange = (e) => {
+    setfilter(e.target.value.toLowerCase());
+  };
+  const filterContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.trim())
+  );
+  const handleAddContact = (newContact) => {
+    setContacts((prev) => [...prev, newContact]);
+  };
+  console.log(contacts);
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList contacts={contacts} />
+      <ContactForm newContact={handleAddContact} />
+      <SearchBox value={filter} onChange={hundleChange} />
+      <ContactList contacts={filterContacts} />
     </div>
   );
 }
